@@ -7,6 +7,9 @@
  */
 package com.sqa.pfs.auto;
 
+import java.io.*;
+
+import org.apache.commons.io.*;
 import org.apache.log4j.*;
 import org.openqa.selenium.*;
 
@@ -31,5 +34,16 @@ public class AutoBasics {
 			logger.warn("Element was not found: " + by);
 			return false;
 		}
+	}
+
+	public static boolean takeScreenshot(String fileLocation, String fileName, WebDriver driver, Logger logger) {
+		File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		try {
+			FileUtils.copyFile(srcFile, new File(fileLocation + "/" + fileName + ".png"));
+		} catch (IOException e) {
+			logger.warn("Screenshot" + fileName + " was not captured to disk correctly.");
+			return false;
+		}
+		return true;
 	}
 }

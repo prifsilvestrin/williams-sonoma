@@ -10,6 +10,8 @@ package com.sqa.pfs.auto;
 import org.apache.log4j.*;
 import org.openqa.selenium.*;
 
+import com.sqa.pfs.adactin.*;
+
 /**
  * Core //ADDD (description of class)
  * <p>
@@ -28,6 +30,25 @@ public class Core {
 	private String baseURL;
 
 	private WebDriver driver;
+
+	private int screenshotCount = 1;
+
+	protected String testingName = "AutoTest";
+
+	private BasicTest relTest;
+
+	public Core(BasicTest test) {
+		super();
+		this.baseURL = test.getBaseURL();
+		this.driver = test.getDriver();
+		this.relTest = test;
+	}
+
+	public Core(String baseURL) {
+		super();
+		this.baseURL = baseURL;
+		this.driver = this.driver;
+	}
 
 	public Core(String baseURL, WebDriver driver) {
 		super();
@@ -49,5 +70,33 @@ public class Core {
 
 	public boolean isPresent(By by) {
 		return AutoBasics.isElementPresent(getDriver(), by, getLog());
+	}
+
+	public boolean takeScreenshot() {
+		boolean tookScreenshot = AutoBasics.takeScreenshot("screenshots", this.testingName + this.screenshotCount,
+				getDriver(), getLog());
+		if (tookScreenshot) {
+			this.screenshotCount++;
+		}
+		return tookScreenshot;
+	}
+
+	public boolean takeScreenshot(String fileName) {
+		return AutoBasics.takeScreenshot("screenshots", fileName, getDriver(), getLog());
+	}
+
+	/**
+	 * @return the relTest
+	 */
+	protected BasicTest getRelTest() {
+		return this.relTest;
+	}
+
+	/**
+	 * @param driver
+	 *            the driver to set
+	 */
+	protected void setDriver(WebDriver driver) {
+		this.driver = driver;
 	}
 }
