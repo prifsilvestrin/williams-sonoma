@@ -1,16 +1,14 @@
 /**
- * File Name: BasicPage.java<br>
+ * File Name: DataType.java<br>
  * Ferreira Silvestrin, Priscila<br>
  * Java Boot Camp Exercise<br>
  * Instructor: Jean-francois Nepton<br>
  * Created: Jul 1, 2017
  */
-package com.sqa.pfs.auto;
-
-import org.openqa.selenium.support.*;
+package com.sqa.pfs.helpers.enums;
 
 /**
- * BasicPage //ADDD (description of class)
+ * DataType //ADDD (description of class)
  * <p>
  * //ADDD (description of core fields)
  * <p>
@@ -20,10 +18,6 @@ import org.openqa.selenium.support.*;
  * @version 1.0.0
  * @since 1.0
  */
-public class BasicPage extends Core {
-
-	public BasicPage(BasicTest test) {
-		super(test);
-		PageFactory.initElements(getDriver(), this);
-	}
+public enum DataType {
+	STRING, INT, FLOAT, DOUBLE, BOOLEAN, CHAR
 }

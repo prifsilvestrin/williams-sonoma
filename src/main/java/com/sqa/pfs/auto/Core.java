@@ -10,8 +10,6 @@ package com.sqa.pfs.auto;
 import org.apache.log4j.*;
 import org.openqa.selenium.*;
 
-import com.sqa.pfs.adactin.*;
-
 /**
  * Core //ADDD (description of class)
  * <p>
