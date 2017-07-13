@@ -5,7 +5,7 @@
  * Instructor: Jean-francois Nepton<br>
  * Created: Jun 29, 2017
  */
-package com.sqa.pfs.auto;
+package com.sqa.pfs.helpers;
 
 import java.io.*;
 import java.util.*;

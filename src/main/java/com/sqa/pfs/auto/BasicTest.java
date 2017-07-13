@@ -13,7 +13,7 @@ public class BasicTest extends Core {
 		super(baseUrl);
 	}
 
-	@BeforeClass(enabled = false)
+	@BeforeClass(enabled = true, groups = "chrome")
 	public void setUpChrome() throws Exception {
 		// Set system property to use Chrome driver
 		System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
@@ -25,7 +25,7 @@ public class BasicTest extends Core {
 		getDriver().manage().window().maximize();
 	}
 
-	@BeforeClass(enabled = true)
+	@BeforeClass(enabled = true, groups = "firefox")
 	public void setUpFirefox() throws Exception {
 		// Setup the driver to use Firefox
 		setDriver(new FirefoxDriver());
@@ -35,7 +35,7 @@ public class BasicTest extends Core {
 		getDriver().manage().window().maximize();
 	}
 
-	@BeforeClass(enabled = false)
+	@BeforeClass(enabled = true, groups = "ie")
 	public void setUpIE() throws Exception {
 		// Set system property to use IE driver
 		System.setProperty("webdriver.ie.driver", "drivers/IEDriverServer.exe");
